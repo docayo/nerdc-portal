@@ -18,7 +18,6 @@ export default function Home() {
             <Link href="/portal" className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-md font-semibold text-sm transition-colors">
               User Login
             </Link>
-            {/* The Developer link is hidden from the main nav for security. You will access it via a secret URL. */}
           </div>
         </div>
       </nav>
@@ -36,7 +35,6 @@ export default function Home() {
             className="w-full h-auto"
             priority
           />
-          {/* Invisible Clickable Overlay for the "Access" Button */}
           <Link 
             href="/portal" 
             className="absolute bottom-[8%] right-[10%] w-[30%] h-[8%] cursor-pointer z-10"
@@ -55,7 +53,6 @@ export default function Home() {
             height={1400} 
             className="w-full h-auto"
           />
-          {/* Invisible Clickable Overlay for the "Access" Button */}
           <Link 
             href="/portal" 
             className="absolute bottom-[8%] right-[10%] w-[30%] h-[8%] cursor-pointer z-10"
@@ -74,7 +71,6 @@ export default function Home() {
             height={1400} 
             className="w-full h-auto"
           />
-          {/* Invisible Clickable Overlay for the "Access" Button */}
           <Link 
             href="/portal" 
             className="absolute bottom-[8%] right-[10%] w-[30%] h-[8%] cursor-pointer z-10"
@@ -86,7 +82,7 @@ export default function Home() {
 
       </main>
 
-            {/* Footer */}
+      {/* Footer */}
       <footer className="w-full bg-blue-900 text-white text-center py-6 mt-10">
         <p className="text-sm font-semibold">
           © 2026 The Ideal Schools Ltd. All rights reserved.
@@ -98,3 +94,6 @@ export default function Home() {
           For: Raji Bashir | Nature Nurture Educational Consult
         </p>
       </footer>
+    </div>
+  );
+}

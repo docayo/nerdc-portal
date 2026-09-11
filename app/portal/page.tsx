@@ -15,13 +15,11 @@ export default function UserPortal() {
 
   const supabase = createClient();
 
-  // 1. Handle User Login
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    // Check if username and pin match a user in the database
     const { data: user, error: userError } = await supabase
       .from("users")
       .select("*")
@@ -35,23 +33,19 @@ export default function UserPortal() {
       return;
     }
 
-    // User is valid! Save their permissions and log them in.
     setUserPermissions(user);
     setIsLoggedIn(true);
     fetchFiles(user);
   };
 
-  // 2. Fetch files based on user permissions
   const fetchFiles = async (user: any) => {
     let allowedClasses: string[] = [];
 
-    // Check which levels the admin assigned to this user
     if (user.can_access_pre_primary) allowedClasses.push("Pre-Nursery", "Nursery 1", "Nursery 2");
     if (user.can_access_primary) allowedClasses.push("Primary 1", "Primary 2", "Primary 3", "Primary 4", "Primary 5", "Primary 6");
     if (user.can_access_jss) allowedClasses.push("JSS 1", "JSS 2", "JSS 3");
     if (user.can_access_sss) allowedClasses.push("SSS 1", "SSS 2", "SSS 3");
 
-    // Fetch files that match the allowed classes
     const { data, error } = await supabase
       .from("files")
       .select("*")
@@ -66,7 +60,6 @@ export default function UserPortal() {
     setLoading(false);
   };
 
-  // 3. Handle Logout
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUsername("");
@@ -75,7 +68,6 @@ export default function UserPortal() {
     setFiles([]);
   };
 
-  // --- RENDER LOGIN SCREEN ---
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-gray-100 p-8 flex justify-center items-center">
@@ -134,10 +126,8 @@ export default function UserPortal() {
     );
   }
 
-  // --- RENDER USER DASHBOARD (After Login) ---
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <header className="bg-blue-900 text-white p-4 shadow-md flex justify-between items-center">
         <div className="flex items-center gap-2">
           <BookOpen className="h-6 w-6" />
@@ -151,8 +141,7 @@ export default function UserPortal() {
         </button>
       </header>
 
-      {/* Main Content */}
-      <main className="p-8 max-w-6xl mx-auto">
+      <main className="p-8 max-w-6xl mx-auto flex-grow w-full">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800">Welcome, {userPermissions?.username}</h2>
           <p className="text-gray-600">Here are your available lesson notes based on your access level.</p>
@@ -189,14 +178,15 @@ export default function UserPortal() {
           </div>
         )}
       </main>
-       {/* Footer for User Portal */}
-      <footer className="w-full bg-gray-200 text-center py-4 mt-10 border-t border-gray-300">
+
+      <footer className="w-full bg-gray-200 text-center py-4 border-t border-gray-300">
         <p className="text-xs text-gray-600 font-semibold">
           © 2026 The Ideal Schools Ltd. All rights reserved.
         </p>
         <p className="text-xs text-gray-500">
           Developed by The Ideal Schools Ltd | For: Raji Bashir (Nature Nurture Educational Consult)
         </p>
-      </footer>   </div>
+      </footer>
+    </div>
   );
 }
