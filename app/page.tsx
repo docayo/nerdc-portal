@@ -86,10 +86,15 @@ export default function Home() {
 
       </main>
 
-      {/* Footer */}
+            {/* Footer */}
       <footer className="w-full bg-blue-900 text-white text-center py-6 mt-10">
-        <p className="text-sm">© {new Date().getFullYear()} Nature Nurture Educational Consult. All rights reserved.</p>
+        <p className="text-sm font-semibold">
+          © 2026 The Ideal Schools Ltd. All rights reserved.
+        </p>
+        <p className="text-xs text-blue-200 mt-1">
+          New National Curriculum E-Lesson Notes | Developed by The Ideal Schools Ltd
+        </p>
+        <p className="text-xs text-blue-200 mt-1">
+          For: Raji Bashir | Nature Nurture Educational Consult
+        </p>
       </footer>
-    </div>
-  );
-}

@@ -189,6 +189,14 @@ export default function UserPortal() {
           </div>
         )}
       </main>
-    </div>
+       {/* Footer for User Portal */}
+      <footer className="w-full bg-gray-200 text-center py-4 mt-10 border-t border-gray-300">
+        <p className="text-xs text-gray-600 font-semibold">
+          © 2026 The Ideal Schools Ltd. All rights reserved.
+        </p>
+        <p className="text-xs text-gray-500">
+          Developed by The Ideal Schools Ltd | For: Raji Bashir (Nature Nurture Educational Consult)
+        </p>
+      </footer>   </div>
   );
 }

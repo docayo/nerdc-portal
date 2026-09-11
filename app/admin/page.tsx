@@ -161,6 +161,8 @@ export default function AdminDashboard() {
           </div>
         )}
       </div>
-    </div>
+         <div className="mt-8 text-center text-xs text-gray-400">
+          <p>© 2026 The Ideal Schools Ltd | For: Raji Bashir (Nature Nurture Educational Consult)</p>
+        </div>   </div>
   );
 }
